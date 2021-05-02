@@ -37,3 +37,48 @@ Mock.mock('/logout','post',()=>{
 
     return Result
 })
+
+Mock.mock('/ums/menu','get',()=>{
+    let menu=[{
+        name:'ums',
+        title:'权限',
+        icon:'el-icon-s-operation',
+        path:'',
+        children:[
+            {
+                name:'umsAdmin',
+                title:'用户列表',
+                icon:'el-icon-s-custom',
+                path:'/ums/admin',
+                component:'/ums/admin/User'
+            },
+            {
+                name:'umsRole',
+                title:'角色列表',
+                icon:'el-icon-rank',
+                path:'/ums/role',
+                component:'/ums/role/Role'
+            },
+            {
+                name:'umsMenu',
+                title:'菜单列表',
+                icon:'el-icon-menu',
+                path:'/ums/menu',
+                component:'/ums/menu/Menu'
+            },
+            {
+                name:'umsResource',
+                title:'资源列表',
+                icon:'el-icon-reading',
+                path:'/ums/resource',
+                component:'/ums/resource/Resource'
+            }
+        ]
+    }]
+    let aut=[]
+    Result.data={
+        menu:menu,
+        aut:aut
+    }
+    return Result
+})

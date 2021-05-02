@@ -19,6 +19,7 @@
         </div>
       </el-header>
       <el-main>
+        <Tab></Tab>
         <router-view>
         </router-view>
       </el-main>
@@ -28,11 +29,13 @@
 
 <script>
 import SideMenu from "./layout/SideMenu";
+import Tab from "./layout/Tab";
 
 export default {
   name: "Home",
   components:{
     SideMenu,
+    Tab
   },
 
   data(){
@@ -106,6 +109,7 @@ a{
 .el-main {
 
   text-align: center;
-  line-height: 160px;
+
+  padding :0;
 }
 </style>
