@@ -20,8 +20,10 @@
       </el-header>
       <el-main>
         <Tab></Tab>
-        <router-view>
+        <div class="content">
+          <router-view>
         </router-view>
+        </div>
       </el-main>
     </el-container>
   </el-container>
@@ -107,9 +109,10 @@ a{
 }
 
 .el-main {
-
-  text-align: center;
-
   padding :0;
+}
+.content{
+  margin: 0 20px;
+  text-align: left;
 }
 </style>

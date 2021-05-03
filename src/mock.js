@@ -82,3 +82,67 @@ Mock.mock('/ums/menu','get',()=>{
     }
     return Result
 })
+
+Mock.mock('/ums/menu/List','get',()=>{
+    Result.data=[{
+        id:1,
+        title:'权限',
+        level:'一级',
+        name:'ums',
+        icon:'el-icon-s-operation',
+        sort:'0',
+        children:[{
+            id:2,
+            title:'用户列表',
+            level:'二级',
+            name:'umsAdmin',
+            icon:'el-icon-s-operation',
+            sort:'0',
+        },
+            {
+                id:3,
+                title:'菜单列表',
+                level:'二级',
+                name:'umsMenu',
+                icon:'el-icon-s-operation',
+                sort:'0',
+            }]
+    }]
+
+    return Result
+})
+
+Mock.mock(RegExp('/ums/menu/info/*'), 'get', () => {
+
+    Result.data ={
+        id:1,
+        title:'权限',
+        level:'一级',
+        name:'ums',
+        icon:'el-icon-s-operation',
+        sort:'0',
+        children:[{
+            id:2,
+            title:'用户列表',
+            level:'二级',
+            name:'umsAdmin',
+            icon:'el-icon-s-operation',
+            sort:'0',
+        },
+            {
+                id:3,
+                title:'菜单列表',
+                level:'二级',
+                name:'umsMenu',
+                icon:'el-icon-s-operation',
+                sort:'0',
+            }]
+    }
+
+    return Result
+})
+
+Mock.mock(RegExp('/ums/menu/*'), 'post', () => {
+
+    return Result
+})

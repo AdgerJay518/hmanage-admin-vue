@@ -106,7 +106,6 @@ export default {
             this.$router.push("/index")
           })
         } else {
-          console.log('error submit!!');
           return false;
         }
       });
@@ -116,7 +115,8 @@ export default {
         this.loginForm.token=res.data.data.token
         this.Img=res.data.data.Img
       })
-    }
+    },
+
   },
   created() {
     this.getImg()
