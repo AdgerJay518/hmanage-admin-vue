@@ -155,15 +155,11 @@ export default {
     getList(){
       this.$axios.get('/ums/menu/List').then(res=>{
         this.list=res.data.data
-        console.log('list')
-        console.log(this.list)
       })
     },
     edit(id){
       this.$axios.get('/ums/menu/info/'+id).then(res=>{
         this.ruleForm=res.data.data
-        console.log(id)
-        console.log(this.ruleForm)
         this.centerDialogVisible=true
       })
     },

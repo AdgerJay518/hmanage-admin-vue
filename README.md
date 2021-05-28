@@ -1,23 +1,19 @@
-# hmanage-admin-vue
+目前进度(5月28日):
 
-## Project setup
-```
-npm install
-```
+登陆界面
+![img.png](img.png)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+首页(尚未完成)
+![img_1.png](img_1.png)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+用户列表(尚未完成)
+![img_2.png](img_2.png)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+角色列表(进行中)
+![img_3.png](img_3.png)
 
-axios：一个基于 promise 的 HTTP 库，类
-ajaxqs：查询参数序列化和解析库
-mockjs：为我们生成随机数据的工具库
+菜单列表(已完成)
+![img_4.png](img_4.png)
+
+资源列表(尚未完成)
+![img_5.png](img_5.png)

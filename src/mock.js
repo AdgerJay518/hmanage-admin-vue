@@ -146,3 +146,25 @@ Mock.mock(RegExp('/ums/menu/*'), 'post', () => {
 
     return Result
 })
+
+Mock.mock('/ums/role/List','get',()=> {
+    Result.data=[
+        {
+            id:1,
+            name:"超级管理员",
+            description:"拥有所有查看和操作功能",
+            adminCount:0,
+            createTime:"2021-05-028 15:11:05",
+            status:1
+        },
+        {
+            id:2,
+            name:"项目管理员",
+            description:"只能管理及操作运动项目",
+            adminCount:0,
+            createTime:"2021-05-028 15:21:05",
+            status:1
+        }
+    ]
+    return Result
+})
