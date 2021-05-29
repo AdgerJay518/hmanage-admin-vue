@@ -72,7 +72,7 @@ Mock.mock('/ums/menu','get',()=>{
                 icon:'el-icon-reading',
                 path:'/ums/resource',
                 component:'/ums/resource/Resource'
-            }
+            },
         ]
     }]
     let aut=[]
@@ -148,23 +148,78 @@ Mock.mock(RegExp('/ums/menu/*'), 'post', () => {
 })
 
 Mock.mock('/ums/role/List','get',()=> {
-    Result.data=[
-        {
-            id:1,
-            name:"超级管理员",
-            description:"拥有所有查看和操作功能",
-            adminCount:0,
-            createTime:"2021-05-028 15:11:05",
-            status:1
-        },
-        {
-            id:2,
-            name:"项目管理员",
-            description:"只能管理及操作运动项目",
-            adminCount:0,
-            createTime:"2021-05-028 15:21:05",
-            status:1
-        }
-    ]
+    Result.data={
+        "list":[
+            {
+                id:1,
+                name:"超级管理员",
+                description:"拥有所有查看和操作功能",
+                adminCount:0,
+                createTime:"2021-05-28 15:11:05",
+                status:1
+            },
+            {
+                id:2,
+                name:"项目管理员",
+                description:"只能管理及操作运动项目",
+                adminCount:0,
+                createTime:"2021-05-28 15:21:05",
+                status:1
+            }
+            ]
+    }
+    return Result
+})
+
+Mock.mock('/role/create','post',()=>{
+
+    return Result
+})
+
+Mock.mock(RegExp('/role/update/*'), 'post', () => {
+
+    return Result
+})
+
+Mock.mock('/role/delete','post',()=>{
+
+    return Result
+})
+
+Mock.mock(RegExp('/role/listMenu/*'), 'get', () => {
+
+    return Result
+})
+
+Mock.mock('/role/allocMenu','post',()=>{
+
+    return Result
+})
+
+Mock.mock(RegExp('/admin/list'),'get',()=> {
+    Result.data={
+        "list":[
+            {
+                id: "1",
+                username: "test",
+                nickName: "测试账号",
+                email: "994057864@qq.com",
+                password:"1234567",
+                createTime:"2021-05-29 15:11:05",
+                loginTime:"2021-05-29 15:31:05",
+                status: 1
+            },
+            {
+                id: "2",
+                username: "admin",
+                nickName: "管理员账号",
+                email: "994857864@qq.com",
+                password:"1234567",
+                createTime:"2021-05-29 15:12:05",
+                loginTime:"2021-05-29 15:30:05",
+                status: 1
+            }
+        ]
+    }
     return Result
 })

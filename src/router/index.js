@@ -48,6 +48,13 @@ const routes = [
       //   component: () => import( '../views/ums/resource/Resource'),
       //   meta: {title: '资源列表', icon: 'ums-resource'}
       // }
+      {
+        name: 'allocMenu',
+        meta: {title: '分配菜单', icon: ''},
+        path:'/ums/allocMenu',
+        component: () => import( '../views/ums/role/allocMenu'),
+        hidden: true
+      },
     ]
   },
   {

@@ -117,15 +117,7 @@ export default {
   name: "menu",
   data(){
     return {
-      list:[{
-        id:'',
-        title:'',
-        level:'',
-        name:'',
-        icon:'',
-        sort:'',
-        children:''
-      }],
+      list:[],
       centerDialogVisible: false,
       ruleForm:{
         title:'',
