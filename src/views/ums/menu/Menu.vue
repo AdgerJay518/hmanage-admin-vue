@@ -111,7 +111,7 @@
 </template>
 
 <script>
-import {updateHidden} from "../../../api/menu";
+import {TreeList, updateHidden} from "../../../api/menu";
 
 export default {
   name: "menu",
@@ -119,14 +119,7 @@ export default {
     return {
       list:[],
       centerDialogVisible: false,
-      ruleForm:{
-        title:'',
-        level:'',
-        name:'',
-        icon:'',
-        hidden:'',
-        sort:''
-      },
+      ruleForm:"null",
       rules:{
         title: [
           { required: true, message: '请输入菜单名称', trigger: 'blur' },
@@ -145,8 +138,8 @@ export default {
   },
   methods:{
     getList(){
-      this.$axios.get('/ums/menu/List').then(res=>{
-        this.list=res.data.data
+      TreeList().then(response => {
+        this.list = response.data.data;
       })
     },
     edit(id){

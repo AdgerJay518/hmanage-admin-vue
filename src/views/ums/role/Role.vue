@@ -75,7 +75,7 @@
             </el-button>
             <el-button size="mini"
                        type="text"
-                       @click="">分配资源
+                       @click="handleSelectResource(scope.$index, scope.row)">分配资源
             </el-button>
           </el-row>
           <el-row>
@@ -201,6 +201,9 @@ export default {
     handleSelectMenu(index,row){
       this.$router.push({path:'/ums/allocMenu',query:{roleId:row.id}})
     },
+    handleSelectResource(index,row){
+      this.$router.push({path:'/ums/allocResource',query:{roleId:row.id}})
+    },
     handleResetSearch() {
       this.searchForm = Object.assign({}, defaultSearchForm);
     },
@@ -254,6 +257,7 @@ export default {
         }
       })
     },
+
     handleDelete(index, row) {
       this.$confirm('是否要删除该角色?', '提示', {
         confirmButtonText: '确定',

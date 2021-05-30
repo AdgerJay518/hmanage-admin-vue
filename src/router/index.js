@@ -55,6 +55,20 @@ const routes = [
         component: () => import( '../views/ums/role/allocMenu'),
         hidden: true
       },
+      {
+        name: 'categoryList',
+        meta: {title: '资源分类', icon: ''},
+        path:'/ums/categoryList',
+        component: () => import( '../views/ums/resource/categoryList'),
+        hidden: true
+      },
+      {
+        name: 'allocResource',
+        meta: {title: '分配资源', icon: ''},
+        path:'/ums/allocResource',
+        component: () => import( '../views/ums/role/allocResource'),
+        hidden: true
+      },
     ]
   },
   {

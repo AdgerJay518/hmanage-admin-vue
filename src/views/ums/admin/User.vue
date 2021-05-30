@@ -35,7 +35,7 @@
       <el-table ref="adminTable"
                 :data="list"
                 style="width: 100%;"
-                border>
+                v-loading="listLoading" border>
         <el-table-column label="编号" width="100" align="center">
           <template slot-scope="scope">{{scope.row.id}}</template>
         </el-table-column>
@@ -192,6 +192,7 @@ export default {
       allocAdminId:null,
       allocDialogVisible: false,
       dialogVisible: false,
+      listLoading: false,
     }
   },
   created() {
@@ -208,7 +209,9 @@ export default {
   },
   methods:{
     getList() {
+      this.listLoading = true;
       getlist(this.listQuery).then(response => {
+        this.listLoading = false;
         this.list = response.data.data.list;
         this.total = response.data.data.list.length;
         console.log("userList"+this.list)

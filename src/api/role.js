@@ -38,3 +38,17 @@ export function allocMenu(data) {
         data:data
     })
 }
+
+export function allocResource(data) {
+    return request({
+        url: '/role/allocResource',
+        method: 'post',
+        data:data
+    })
+}
+export function listResourceByRole(roleId) {
+    return request({
+        url: '/role/listResource/'+roleId,
+        method: 'get'
+    })
+}

@@ -223,3 +223,45 @@ Mock.mock(RegExp('/admin/list'),'get',()=> {
     }
     return Result
 })
+
+Mock.mock(RegExp('/resource/list'),'get',()=> {
+    Result.data={
+        "list":[
+            {
+                id: "1",
+                name: "商品品牌管理",
+                url: "/brand/**",
+                description: "",
+                createTime:"2021-05-30 14:41:55",
+            },
+            {
+                id: "2",
+                name: "商品属性分类管理",
+                url: "/productAttribute/**",
+                description: "",
+                createTime:"2021-05-30 15:11:05",
+            }
+        ]
+    }
+    return Result
+})
+
+Mock.mock(RegExp('/resourceCategory/listAll'),'get',()=> {
+    Result.data={
+        "list":[
+            {
+                id: "1",
+                name: "商品模块",
+                createTime:"2021-05-30 15:41:55",
+                sort:"0"
+            },
+            {
+                id: "2",
+                name: "订单模块",
+                createTime:"2021-05-30 14:22:51",
+                sort:"0"
+            }
+        ]
+    }
+    return Result
+})
