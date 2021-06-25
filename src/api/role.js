@@ -1,5 +1,12 @@
 import request from "../axios";
 
+export function fetchAllRoleList() {
+    return request({
+        url: '/role/listAll',
+        method: 'get'
+    })
+}
+
 export function createRole(data) {
     return request({
         url: '/role/create',

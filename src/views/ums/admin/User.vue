@@ -163,6 +163,7 @@ import {
   updateStatus
 } from "../../../api/login";
 import {formatDate} from "../../../utils/date";
+import {fetchAllRoleList} from "../../../api/role";
 
 const defaultListQuery = {
   pageNum: 1,
@@ -197,6 +198,7 @@ export default {
   },
   created() {
     this.getList()
+    this.getAllRoleList();
   },
   filters: {
     formatDateTime(time) {
@@ -212,8 +214,8 @@ export default {
       this.listLoading = true;
       getlist(this.listQuery).then(response => {
         this.listLoading = false;
-        this.list = response.data.data.list;
-        this.total = response.data.data.list.length;
+        this.list = response.data.list;
+        this.total = response.data.list.length;
         console.log("userList"+this.list)
       });
     },
@@ -249,12 +251,18 @@ export default {
         this.getList();
       });
     },
+    getAllRoleList() {
+      fetchAllRoleList().then(response => {
+        this.allRoleList = response.data;
+      });
+    },
     getRoleListByAdmin(adminId) {
       getRoleByAdmin(adminId).then(response => {
         let allocRoleList = response.data;
         this.allocRoleIds=[];
         if(allocRoleList!=null&&allocRoleList.length>0){
           for(let i=0;i<allocRoleList.length;i++){
+            console.log(allocRoleList[i])
             this.allocRoleIds.push(allocRoleList[i].id);
           }
         }
