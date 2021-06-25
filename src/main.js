@@ -6,8 +6,11 @@ import Element from 'element-ui'
 import "element-ui/lib/theme-chalk/index.css"
 import axios from './axios'
 import '@/icons' // icon
+import './permission'
+import './styles/index.scss'
+import 'normalize.css/normalize.css'// A modern alternative to CSS resets
 
-require('./mock.js')
+//require('./mock.js')
 Vue.prototype.$axios = axios //
 Vue.use(Element)
 Vue.config.productionTip = false

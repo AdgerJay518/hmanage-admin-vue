@@ -35,15 +35,6 @@
           </span>
           </el-input>
         </el-form-item>
-        <el-form-item  prop="code" style="width: 380px">
-          <el-input v-model="loginForm.code" style="width:150px;float: left"
-                    placeholder="请输入验证码">
-            <span slot="prefix">
-            <svg-icon icon-class="code"></svg-icon>
-          </span>
-          </el-input>
-          <el-image :src="Img" class="Img" @click="getImg"></el-image>
-        </el-form-item>
         <el-form-item >
           <el-button  style="width: 280px"type="primary" @click="submitForm('loginForm')">登录</el-button>
         </el-form-item>
@@ -55,13 +46,14 @@
 
 <script>
 import login_center_bg from '@/assets/background.png'
+import {setCookie} from "../utils/support";
 
 export default {
   name: "Login",
   data() {
     return {
       loginForm: {
-        username: 'admin',
+        username: 'test',
         password: '123456',
         code: '',
         token:''
@@ -72,10 +64,6 @@ export default {
         ],
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' }
-        ],
-        code: [
-          { required: true, message: '请输入验证码', trigger: 'blur' },
-          { min: 5, max: 5, message: '长度为5 个字符', trigger: 'blur' }
         ]
       },
       loading: false,
@@ -100,26 +88,19 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$axios.post('/login', this.loginForm).then(res=>{
-            const jwt=res.headers['authorization']
-            this.$store.commit('SET_TOKEN',jwt)
-            this.$router.push("/index")
+          this.$store.dispatch('Login', this.loginForm).then(res=>{
+            setCookie("username",this.loginForm.username,15);
+            setCookie("password",this.loginForm.password,15);
+            // const jwt=res.headers['authorization']
+            // this.$store.commit('SET_TOKEN',jwt)
+            this.$router.push({path: '/'}).catch(()=>{})
           })
         } else {
+          console.log('参数验证不合法！');
           return false;
         }
       });
-    },
-    getImg(){
-      this.$axios.get('/getCode').then(res=>{
-        this.loginForm.token=res.data.data.token
-        this.Img=res.data.data.Img
-      })
-    },
-
-  },
-  created() {
-    this.getImg()
+    }
   }
 }
 </script>

@@ -1,24 +1,18 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import menu from "./modules/menu";
+import permission from "./modules/permission"
+import getters from "./getters";
+import user from "./modules/user";
+import app from "./modules/app";
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
-    token:''
-  },
-  mutations: {
-    SET_TOKEN:(state , token)=>{
-      state.token=token
-      localStorage.setItem("token",token)
-    },
-    resetState:(state)=>{
-      state.token=''
-}
-  },
-  actions: {
-  },
+const store = new Vuex.Store({
   modules: {
-    menu
-  }
+    app,
+    user,
+    permission
+  },
+  getters
 })
+
+export default store

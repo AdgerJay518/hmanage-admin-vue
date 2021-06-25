@@ -1,5 +1,31 @@
 import request from "../axios";
 
+
+export function login(username, password) {
+    return request({
+        url: '/admin/login',
+        method: 'post',
+        data: {
+            username,
+            password
+        }
+    })
+}
+
+export function getInfo() {
+    return request({
+        url: '/admin/info',
+        method: 'get',
+    })
+}
+
+export function logout() {
+    return request({
+        url: '/admin/logout',
+        method: 'post'
+    })
+}
+
 export function getlist(params) {
     return request({
         url: '/admin/list',
