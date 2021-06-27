@@ -21,7 +21,7 @@
     <div style="margin-top: 15px">
       <el-form :inline="true"  size="small" label-width="140px">
         <el-form-item label="输入搜索：">
-          <el-input v-model="searchForm.name" class="input-width" placeholder="角色名称" clearable></el-input>
+          <el-input v-model="searchForm.keyword" class="input-width" placeholder="角色名称" clearable></el-input>
         </el-form-item>
       </el-form>
     </div>
@@ -142,7 +142,7 @@
 
 <script>
 import {formatDate} from '../../../utils/date';
-import {createRole,updateRole,deleteRole} from '../../../api/role';
+import {getList,createRole,updateRole,deleteRole} from '../../../api/role';
 const defaultSearchForm = {
   pageNum: 1,
   pageSize: 5,
@@ -160,16 +160,7 @@ export default {
   data(){
     return {
       searchForm:Object.assign({}, defaultSearchForm),
-      list: [
-        {
-          id:' ',
-          name:' ',
-          description:' ',
-          adminCount:' ',
-          createTime:' ',
-          status:' '
-        }
-      ],
+      list: null,
       total: null,
       listLoading: false,
       dialogVisible: false,
@@ -192,10 +183,10 @@ export default {
   methods:{
     getList(){
       this.listLoading=true
-      this.$axios.get('/ums/role/List').then(res=>{
+      getList(this.searchForm).then(res=>{
         this.listLoading=false
-        this.list=res.data.data.list
-        this.total = res.data.data.list.length;
+        this.list=res.data.list;
+        this.total = res.data.list.length;
       })
     },
     handleSelectMenu(index,row){

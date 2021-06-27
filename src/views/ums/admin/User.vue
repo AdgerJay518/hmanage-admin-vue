@@ -262,7 +262,6 @@ export default {
         this.allocRoleIds=[];
         if(allocRoleList!=null&&allocRoleList.length>0){
           for(let i=0;i<allocRoleList.length;i++){
-            console.log(allocRoleList[i])
             this.allocRoleIds.push(allocRoleList[i].id);
           }
         }

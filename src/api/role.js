@@ -1,5 +1,14 @@
 import request from "../axios";
 
+export function getList(params) {
+    return request({
+        url: '/role/list',
+        method: 'get',
+        params: params
+    })
+}
+
+
 export function fetchAllRoleList() {
     return request({
         url: '/role/listAll',
