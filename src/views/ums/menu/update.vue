@@ -1,6 +1,6 @@
 <template>
 
-  <menu-detail :is-edit='false'></menu-detail>
+  <menu-detail :is-edit='true'></menu-detail>
 
 </template>
 
@@ -9,7 +9,7 @@
 import MenuDetail from './components/MenuDetail'
 
 export default {
-  name: 'addMenu',
+  name: 'updateMenu',
   components: { MenuDetail }
 }
 
@@ -18,4 +18,5 @@ export default {
 <style>
 
 </style>
+
 

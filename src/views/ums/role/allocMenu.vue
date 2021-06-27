@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import {TreeList} from '../../../api/menu';
+import {getList} from '../../../api/menu';
 import {listMenuByRole,allocMenu} from '../../../api/role';
 
 export default {
@@ -40,8 +40,8 @@ export default {
   },
   methods: {
     treeList() {
-      TreeList().then(response => {
-        this.list = response.data.data;
+      getList().then(response => {
+        this.list = response.data;
       });
     },
     getRoleMenu(roleId){

@@ -70,6 +70,20 @@ export const asyncRouter = [
         component: () => import('../views/ums/resource/categoryList'),
         meta: {title: '资源分类'},
         hidden: true
+      },
+      {
+        path: 'addMenu',
+        name: 'addMenu',
+        component: () => import('../views/ums/menu/addMenu'),
+        meta: {title: '添加菜单'},
+        hidden: true
+      },
+      {
+        path: 'updateMenu',
+        name: 'updateMenu',
+        component: () => import('../views/ums/menu/update'),
+        meta: {title: '修改菜单'},
+        hidden: true
       }
     ]
   },

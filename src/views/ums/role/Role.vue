@@ -59,7 +59,7 @@
       <el-table-column label="是否启用" width="140" align="center">
         <template slot-scope="scope">
           <el-switch
-              @change=""
+              @change="handleStatusChange"
               :active-value="1"
               :inactive-value="0"
               v-model="scope.row.status">
@@ -94,7 +94,6 @@
     </el-table>
   </div>
 
-<!--  编辑角色和添加角色对话框-->
   <el-dialog
       :title="isEdit?'编辑角色':'添加角色'"
       :visible.sync="dialogVisible"
@@ -142,7 +141,7 @@
 
 <script>
 import {formatDate} from '../../../utils/date';
-import {getList,createRole,updateRole,deleteRole} from '../../../api/role';
+import {getList,createRole,updateRole,deleteRole,updateStatus} from '../../../api/role';
 const defaultSearchForm = {
   pageNum: 1,
   pageSize: 5,
@@ -248,7 +247,26 @@ export default {
         }
       })
     },
-
+    handleStatusChange(index, row) {
+      this.$confirm('是否要修改该状态?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        updateStatus(row.id, {status: row.status}).then(response => {
+          this.$message({
+            type: 'success',
+            message: '修改成功!'
+          });
+        });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '取消修改'
+        });
+        this.getList();
+      });
+    },
     handleDelete(index, row) {
       this.$confirm('是否要删除该角色?', '提示', {
         confirmButtonText: '确定',

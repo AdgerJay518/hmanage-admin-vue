@@ -8,6 +8,14 @@ export function getList(params) {
     })
 }
 
+export function updateStatus(id, params) {
+    return request({
+        url: '/role/updateStatus/' + id,
+        method: 'post',
+        params: params
+    })
+}
+
 
 export function fetchAllRoleList() {
     return request({

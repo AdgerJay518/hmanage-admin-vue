@@ -1,4 +1,4 @@
-<template>
+<template> 
   <div class="app-container">
     <el-card class="filter-container" shadow="never">
       <div>
@@ -130,7 +130,7 @@
 <script>
 import {fetchList,createResource,updateResource,deleteResource} from '../../../api/resource';
 import {listAllCate} from '../../../api/resourceCategory';
-import {formatDate} from "../../../utils/date";
+import {formatDate} from '../../../utils/date';
 
 const defaultListQuery = {
   pageNum: 1,
@@ -147,7 +147,7 @@ const defaultResource = {
   description:''
 };
 export default {
-  name: 'resource',
+  name: 'resourceList',
   data() {
     return {
       listQuery: Object.assign({}, defaultListQuery),
@@ -245,19 +245,19 @@ export default {
       })
     },
     handleShowCategory(){
-      this.$router.push({path: '/ums/categoryList'})
+      this.$router.push({path: '/ums/resourceCategory'})
     },
     getList() {
       this.listLoading = true;
       fetchList(this.listQuery).then(response => {
         this.listLoading = false;
-        this.list = response.data.data.list;
-        this.total = response.data.data.length;
+        this.list = response.data.list;
+        this.total = response.data.total;
       });
     },
     getCateList(){
       listAllCate().then(response=>{
-        let cateList = response.data.data.list;
+        let cateList = response.data;
         for(let i=0;i<cateList.length;i++){
           let cate = cateList[i];
           this.categoryOptions.push({label:cate.name,value:cate.id});
@@ -268,22 +268,6 @@ export default {
   }
 }
 </script>
-<style>
-.btn-add{
-  float: right;
-}
-
-.operate-container {
-  margin-top: 20px;
-}
-.table-container {
-  margin-top: 20px;
-}
-.pagination-container {
-  display: inline-block;
-  float: right;
-  margin-top: 20px;
-}
-</style>
+<style></style>
 
 
