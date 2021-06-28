@@ -59,7 +59,7 @@
       <el-table-column label="是否启用" width="140" align="center">
         <template slot-scope="scope">
           <el-switch
-              @change="handleStatusChange"
+              @change="handleStatusChange(scope.$index, scope.row)"
               :active-value="1"
               :inactive-value="0"
               v-model="scope.row.status">
