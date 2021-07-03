@@ -45,3 +45,10 @@ export function getMenu(id) {
         method: 'get',
     })
 }
+
+export function getTreeList() {
+    return request({
+        url: '/menu/treeList',
+        method: 'get'
+    })
+}
