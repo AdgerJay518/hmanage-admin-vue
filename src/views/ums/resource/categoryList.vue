@@ -1,4 +1,4 @@
-<template> 
+<template>
   <div class="app-container">
     <el-card shadow="never" class="operate-container">
       <i class="el-icon-tickets"></i>
@@ -145,7 +145,7 @@ export default {
       this.listLoading = true;
       listAllCate({}).then(response => {
         this.listLoading = false;
-        this.list = response.data.data.list;
+        this.list = response.data;
       });
     }
   }

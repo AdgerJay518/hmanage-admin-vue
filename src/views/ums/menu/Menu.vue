@@ -85,7 +85,7 @@
 </template>
 
 <script>
-import {getList, updateHidden,deleteMenu,updateMenu,} from "../../../api/menu";
+import {getList, updateHidden,deleteMenu} from "../../../api/menu";
 
 export default {
   name: "menuList",
