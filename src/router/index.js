@@ -87,6 +87,76 @@ export const asyncRouter = [
       }
     ]
   },
+  {
+    path: '/pms',
+    name: 'pms',
+    redirect: '/pms/product',
+    component: layout,
+    meta: {title: '商品', icon: 'pms'},
+    children: [
+      {
+        path: 'product',
+        name: 'product',
+        component: () => import('../views/pms/product/Product'),
+        meta: {title: '商品列表', icon: 'pms-product'}
+      },
+      {
+        path: 'addProduct',
+        name: 'addProduct',
+        component: () => import('../views/pms/addProduct/addProduct'),
+        meta: {title: '添加商品', icon: 'pms-addProduct'}
+      },
+    ]
+  },
+  {
+    path: '/sms',
+    name: 'sms',
+    redirect: '/sms/sport',
+    meta: {title: '运动', icon: 'sms'},
+    component: layout,
+    children: [
+      {
+        path: 'sport',
+        name: 'sport',
+        component: () => import('../views/sms/sport/Sport'),
+        meta: {title: '运动列表', icon: 'sms-sport'}
+      },
+      {
+        path: 'sportCompose',
+        name: 'sportCompose',
+        component: () => import('../views/sms/sportCompose/SportCompose'),
+        meta: {title: '运动组合', icon: 'sms-SportCompose'}
+      },
+      {
+        path: 'calorie',
+        name: 'calorie',
+        component: () => import('../views/sms/calorie/Calorie'),
+        meta: {title: '卡路里', icon: 'sms-calorie'}
+      },
+    ]
+  },
+  {
+    path: '/fms',
+    name: 'fms',
+    redirect: '/fms/food',
+    meta: {title: '食品', icon: 'fms'},
+    component: layout,
+    children: [
+      {
+        path: 'food',
+        name: 'food',
+        component: () => import('../views/fms/food/Food'),
+        meta: {title: '食品列表', icon: 'fms-food'}
+      },
+      {
+        path: 'foodCompose',
+        name: 'foodCompose',
+        component: () => import('../views/fms/foodCompose/FoodCompose'),
+        meta: {title: '营养搭配', icon: 'fms-FoodCompose'}
+      },
+    ]
+  }
+
 ]
 
 export default new VueRouter({
