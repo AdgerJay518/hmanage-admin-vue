@@ -6,6 +6,7 @@ import {getToken} from "./utils/auth"
 //axios.defaults.baseURL="http://localhost:8081"
 // 创建axios实例
 const service = axios.create({
+    assetsSubDirectory: 'static',
     baseURL: "http://localhost:8081", // api的base_url
     timeout: 15000 // 请求超时时间
 })

@@ -25,7 +25,7 @@ export function updateRecommendStatus(params) {
     })
 }
 
-export function createProduct(data) {
+export function createSport(data) {
     return request({
         url:'/sport/create',
         method:'post',
@@ -47,5 +47,6 @@ export function getSport(id) {
         method:'get',
     })
 }
+
 
 
