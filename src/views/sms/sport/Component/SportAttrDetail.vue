@@ -7,10 +7,10 @@
       <el-form-item label="规格参数：">
         <el-tabs v-model="activeHtmlName" type="card">
           <el-tab-pane label="电脑端详情" name="pc">
-            <tinymce :width="595" :height="300" v-model="value.detailHtml"></tinymce>
+            <tiny-mac :width="595" :height="300" v-model="value.detailHtml"></tiny-mac>
           </el-tab-pane>
           <el-tab-pane label="移动端详情" name="mobile">
-            <tinymce :width="595" :height="300" v-model="value.detailMobileHtml"></tinymce>
+            <tiny-mac :width="595" :height="300" v-model="value.detailMobileHtml"></tiny-mac>
           </el-tab-pane>
         </el-tabs>
       </el-form-item>
@@ -25,7 +25,7 @@
 <script>
 
 import MultiUpload from "../../../../components/Upload/multiUpload";
-import TinyMac from "../../../../components/Tinymce"
+import TinyMac from "../../../../components/imcoder-tinymce"
 
 export default {
   name: "SportAttrDetail",
