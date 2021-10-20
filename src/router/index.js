@@ -90,7 +90,14 @@ export const asyncRouter = [
         path: 'calorie',
         name: 'calorie',
         component: () => import('../views/sms/calorie/Calorie'),
-        meta: {title: '卡路里', icon: 'sms-calorie'}
+        meta: {title: '运动记录', icon: 'sms-history'}
+      },
+      {
+        path: 'orderDetail',
+        name: 'orderDetail',
+        component: () => import('../views/sms/calorie/orderDetail'),
+        meta: {title: '计划详情'},
+        hidden:true
       },
     ]
   },

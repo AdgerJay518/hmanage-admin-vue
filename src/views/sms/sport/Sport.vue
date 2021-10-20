@@ -325,13 +325,12 @@ export default {
         }
         switch (this.operateType) {
           case this.operates[0].value:
-          case this.operates[2].value:
             this.updateRecommendStatus(1,ids);
             break;
-          case this.operates[3].value:
+          case this.operates[1].value:
             this.updateRecommendStatus(0,ids);
             break;
-          case this.operates[7].value:
+          case this.operates[2].value:
             this.updateDeleteStatus(1,ids);
             break;
           default:
