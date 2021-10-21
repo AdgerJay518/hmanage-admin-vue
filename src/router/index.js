@@ -115,10 +115,43 @@ export const asyncRouter = [
         meta: {title: '食品列表', icon: 'fms-food'}
       },
       {
+        path: 'addFood',
+        name: 'addFood',
+        component: () => import('../views/fms/addFood/AddFood'),
+        meta: {title: '添加食品', icon: 'fms-add'}
+      },
+      {
+        path: 'foodCate',
+        name: 'foodCate',
+        component: () => import('../views/fms/foodCate/FoodCate'),
+        meta: {title: '食品分类', icon: 'fms-foodCate'}
+      },
+      {
         path: 'foodCompose',
         name: 'foodCompose',
         component: () => import('../views/fms/foodCompose/FoodCompose'),
         meta: {title: '营养搭配', icon: 'fms-FoodCompose'}
+      }
+    ]
+  },
+  {
+    path: '/hms',
+    name: 'hms',
+    redirect: '/hms/manage',
+    meta: {title: '社区', icon: 'hms'},
+    component: layout,
+    children: [
+      {
+        path: 'subject',
+        name: 'subject',
+        component: () => import('../views/hms/subject/Subject'),
+        meta: {title: '主题管理', icon: 'hms-subject'}
+      },
+      {
+        path: 'discussion',
+        name: 'discussion',
+        component: () => import('../views/hms/discussion/Discussion'),
+        meta: {title: '讨论留言', icon: 'hms-discussion'}
       },
     ]
   },

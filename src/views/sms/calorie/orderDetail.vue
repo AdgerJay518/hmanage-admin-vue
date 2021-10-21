@@ -198,7 +198,6 @@ export default {
     this.id = this.list = this.$route.query.id;
     getOrderDetail(this.id).then(response => {
       this.order = response.data;
-      console.log(this.order.orderItemList)
     });
   },
   filters: {
