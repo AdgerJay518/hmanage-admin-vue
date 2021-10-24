@@ -139,6 +139,7 @@
       <el-select v-model="allocRoleIds" multiple placeholder="请选择" size="small" style="width: 80%">
         <el-option
             v-for="item in allRoleList"
+            v-if="item.status!=0"
             :key="item.id"
             :label="item.name"
             :value="item.id">
