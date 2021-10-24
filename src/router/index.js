@@ -127,6 +127,20 @@ export const asyncRouter = [
         meta: {title: '食品分类', icon: 'fms-foodCate'}
       },
       {
+        path: 'addFoodCate',
+        name: 'addFoodCate',
+        component: () => import('../views/fms/foodCate/add'),
+        meta: {title: '添加食品分类'},
+        hidden: true
+      },
+      {
+        path: 'updateFoodCate',
+        name: 'updateFoodCate',
+        component: () => import('../views/fms/foodCate/update'),
+        meta: {title: '更新食品分类'},
+        hidden: true
+      },
+      {
         path: 'foodCompose',
         name: 'foodCompose',
         component: () => import('../views/fms/foodCompose/FoodCompose'),
