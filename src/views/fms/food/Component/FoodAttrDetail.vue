@@ -1,8 +1,8 @@
 <template>
   <div style="margin-top: 50px">
-    <el-form :model="value" ref="sportAttrForm" label-width="120px" style="width: 720px" size="small">
+    <el-form :model="value" ref="FoodAttrForm" label-width="120px" style="width: 720px" size="small">
       <el-form-item label="相册：">
-        <multi-upload v-model="selectSportPics"></multi-upload>
+        <multi-upload v-model="selectFoodPics"></multi-upload>
       </el-form-item>
       <el-form-item label="规格参数：">
         <el-tabs v-model="activeHtmlName" type="card">
@@ -23,12 +23,10 @@
 </template>
 
 <script>
-
 import MultiUpload from "../../../../components/Upload/multiUpload";
 import TinyMac from "../../../../components/imcoder-tinymce"
-
 export default {
-  name: "SportAttrDetail",
+  name: "FoodAttrDetail",
   components:{MultiUpload,TinyMac},
   props: {
     value: Object,
@@ -44,7 +42,7 @@ export default {
     }
   },
   computed:{
-    selectSportPics:{
+    selectFoodPics:{
       get:function () {
         let pics=[];
         if(this.value.pic===undefined||this.value.pic==null||this.value.pic===''){

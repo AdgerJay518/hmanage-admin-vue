@@ -57,10 +57,10 @@
         <el-table-column label="编号" width="100" align="center">
           <template slot-scope="scope">{{scope.row.id}}</template>
         </el-table-column>
-        <el-table-column label="图片" width="120" align="center">
+        <el-table-column label="图片" align="center">
           <template slot-scope="scope"><img style="height: 80px" :src="scope.row.pic"></template>
         </el-table-column>
-        <el-table-column label="名称" align="center">
+        <el-table-column label="名称" width="120" align="center">
           <template slot-scope="scope">
             <p>{{scope.row.name}}</p>
           </template>
@@ -82,8 +82,8 @@
             </p>
           </template>
         </el-table-column>
-        <el-table-column label="卡路里" width="100" align="center">
-          <template slot-scope="scope">{{scope.row.sort}}</template>
+        <el-table-column label="卡路里" width="200" align="center">
+          <template slot-scope="scope">{{scope.row.calorie}}{{scope.row.unit}}</template>
         </el-table-column>
         <el-table-column label="操作" width="160" align="center">
           <template slot-scope="scope">
