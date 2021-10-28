@@ -174,6 +174,26 @@ export const asyncRouter = [
         component: () => import('../views/hms/discussion/Discussion'),
         meta: {title: '讨论留言', icon: 'hms-discussion'}
       },
+      {
+        path: 'advertise',
+        name: 'advertise',
+        component: () => import('../views/hms/advertise/Advertise'),
+        meta: {title: '广告列表', icon: 'hms-advertise'}
+      },
+      {
+        path: 'addAdvertise',
+        name: 'addHomeAdvertise',
+        component: () => import('../views/hms/advertise/add'),
+        meta: {title: '添加广告'},
+        hidden:true
+      },
+      {
+        path: 'updateAdvertise',
+        name: 'updateHomeAdvertise',
+        component: () => import('../views/hms/advertise/update'),
+        meta: {title: '编辑广告'},
+        hidden:true
+      }
     ]
   },
   {
