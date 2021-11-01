@@ -188,6 +188,13 @@ export const asyncRouter = [
         hidden:true
       },
       {
+        path: 'subjectList',
+        name: 'subjectList',
+        component: () => import('../views/hms/subject/SubjectList'),
+        meta: {title: '主题列表'},
+        hidden:true
+      },
+      {
         path: 'updateAdvertise',
         name: 'updateHomeAdvertise',
         component: () => import('../views/hms/advertise/update'),
