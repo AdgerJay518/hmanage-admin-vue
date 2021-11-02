@@ -169,10 +169,10 @@ export const asyncRouter = [
         meta: {title: '主题管理', icon: 'hms-subject'}
       },
       {
-        path: 'discussion',
-        name: 'discussion',
-        component: () => import('../views/hms/discussion/Discussion'),
-        meta: {title: '讨论留言', icon: 'hms-discussion'}
+        path: 'member',
+        name: 'member',
+        component: () => import('../views/hms/member/Member'),
+        meta: {title: '用户管理', icon: 'hms-member'}
       },
       {
         path: 'advertise',
@@ -192,6 +192,13 @@ export const asyncRouter = [
         name: 'subjectList',
         component: () => import('../views/hms/subject/SubjectList'),
         meta: {title: '主题列表'},
+        hidden:true
+      },
+      {
+        path: 'subjectComment',
+        name: 'subjectComment',
+        component: () => import('../views/hms/subject/SubjectComment'),
+        meta: {title: '主题评论'},
         hidden:true
       },
       {

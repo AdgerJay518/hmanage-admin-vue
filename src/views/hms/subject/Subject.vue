@@ -389,7 +389,7 @@ export default {
       });
     },
     deleteSubject(ids){
-      this.$confirm('是否要删除该推荐?', '提示', {
+      this.$confirm('是否要删除该专题?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'

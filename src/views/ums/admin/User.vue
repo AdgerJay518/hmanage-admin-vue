@@ -217,7 +217,6 @@ export default {
         this.listLoading = false;
         this.list = response.data.list;
         this.total = response.data.list.length;
-        console.log("userList"+this.list)
       });
     },
     handleResetSearch() {

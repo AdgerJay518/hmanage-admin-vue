@@ -14,13 +14,13 @@
         <el-table-column label="编号" width="100" align="center">
           <template slot-scope="scope">{{scope.row.id}}</template>
         </el-table-column>
-        <el-table-column label="专题分类名称" width="100" align="center">
+        <el-table-column label="专题分类名称" width="120" align="center">
           <template slot-scope="scope">{{scope.row.categoryName}}</template>
         </el-table-column>
         <el-table-column label="标题" width="140" align="center">
           <template slot-scope="scope">{{scope.row.title}}</template>
         </el-table-column>
-        <el-table-column label="图片"  align="center">
+        <el-table-column label="主图"  align="center">
           <template slot-scope="scope"><img style="height: 80px" :src="scope.row.pic"></template>
         </el-table-column>
         <el-table-column label="内容" show-overflow-tooltip  align="center">
@@ -54,6 +54,10 @@
             <el-button size="mini"
                        type="text"
                        @click="handleDelete(scope.$index, scope.row)">删除
+            </el-button>
+            <el-button size="mini"
+                       type="text"
+                       @click="handleShowComment(scope.$index, scope.row)">评论
             </el-button>
           </template>
         </el-table-column>
@@ -123,6 +127,10 @@ export default {
     this.getList();
   },
   methods:{
+    handleShowComment(index,row){
+      this.$router.push({path:'/hms/subjectComment',query:{
+          subjectId:row.id}})
+    },
     handleSizeChange(val) {
       this.listQuery.pageNum = 1;
       this.listQuery.pageSize = val;
