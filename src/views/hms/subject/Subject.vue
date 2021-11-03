@@ -38,7 +38,13 @@
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets"></i>
       <span>数据列表</span>
-      <el-button size="mini" class="btn-add" @click="handleSelectSubject()">专题详情</el-button>
+      <el-button size="mini" class="btn-add" @click="handleSelectSubject()" style="margin-left: 20px">专题详情</el-button>
+      <el-button
+          class="btn-add"
+          @click="handleAddSubject()"
+          size="mini">
+        添加专题
+      </el-button>
     </el-card>
     <div class="table-container">
       <el-table ref="newSubjectTable"
@@ -67,14 +73,18 @@
             </el-switch>
           </template>
         </el-table-column>
-        <el-table-column label="排序" width="160" align="center">
+        <el-table-column label="排序" width="80" align="center">
           <template slot-scope="scope">{{scope.row.sort}}</template>
+        </el-table-column>
+        <el-table-column label="主题个数" width="80" align="center">
+          <template slot-scope="scope">{{scope.row.subjectCount}}</template>
         </el-table-column>
         <el-table-column label="推荐状态" width="160" align="center">
           <template slot-scope="scope">{{scope.row.showStatus | formatRecommendStatus}}</template>
         </el-table-column>
         <el-table-column label="操作" width="180" align="center">
           <template slot-scope="scope">
+            <el-row>
             <el-button size="mini"
                        type="text"
                        @click="handleShowRelation(scope.$index, scope.row)">主题列表
@@ -83,10 +93,18 @@
                        type="text"
                        @click="handleEditSort(scope.$index, scope.row)">设置排序
             </el-button>
+            </el-row>
+            <el-row>
+            <el-button
+                size="mini"
+                type="text"
+                @click="handleUpdate(scope.$index, scope.row)">编辑
+            </el-button>
             <el-button size="mini"
                        type="text"
                        @click="handleDelete(scope.$index, scope.row)">删除
             </el-button>
+            </el-row>
           </template>
         </el-table-column>
       </el-table>
@@ -254,6 +272,12 @@ export default {
     },
   },
   methods: {
+    handleUpdate(index, row) {
+      this.$router.push({path:'/hms/updateSubject',query:{id:row.id}});
+    },
+    handleAddSubject(){
+      this.$router.push('/hms/addSubject');
+    },
     handleShowRelation(index,row){
       this.$router.push({path:'/hms/subjectList',query:{
           subjectId:row.id}})
@@ -389,7 +413,7 @@ export default {
       });
     },
     deleteSubject(ids){
-      this.$confirm('是否要删除该专题?', '提示', {
+      this.$confirm('是否要删除该专题?专题中的主题帖也将被删除!', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
