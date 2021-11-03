@@ -50,6 +50,9 @@
         <el-table-column label="电话号码" align="center">
           <template slot-scope="scope">{{scope.row.phone}}</template>
         </el-table-column>
+        <el-table-column label="账号状态" width="80" align="center">
+          <template slot-scope="scope">{{scope.row.status | status}}</template>
+        </el-table-column>
         <el-table-column label="注册时间" width="160" align="center">
           <template slot-scope="scope">{{scope.row.createTime | formatDateTime}}</template>
         </el-table-column>
@@ -62,7 +65,7 @@
         <el-table-column label="成长值" width="100" align="center">
           <template slot-scope="scope">{{scope.row.growth}}</template>
         </el-table-column>
-        <el-table-column label="是否启用" width="100" align="center">
+        <el-table-column label="更改状态" width="100" align="center">
           <template slot-scope="scope">
             <el-switch
                 @change="handleStatusChange(scope.$index, scope.row)"
@@ -76,7 +79,7 @@
           <template slot-scope="scope">
             <el-button size="mini"
                        type="text"
-                       @click="handleDelete(scope.$index, scope.row)">删除
+                       @click="handleDelete(scope.$index, scope.row)">注销
             </el-button>
           </template>
         </el-table-column>
@@ -135,6 +138,13 @@ export default {
     }
   },
   filters: {
+    status(status){
+      if(status===1){
+        return '正常';
+      }else{
+        return '已锁定';
+      }
+    },
     formatDateTime(time) {
       if (time == null || time === '') {
         return 'N/A';
@@ -184,7 +194,7 @@ export default {
     },
 
     handleDelete(index, row) {
-      this.$confirm('是否要删除该用户?', '提示', {
+      this.$confirm('是否要注销该用户?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
@@ -192,7 +202,7 @@ export default {
         deleteMember(row.id).then(response => {
           this.$message({
             type: 'success',
-            message: '删除成功!'
+            message: '注销成功!'
           });
           this.getList();
         });
