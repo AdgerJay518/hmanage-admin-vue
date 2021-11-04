@@ -76,6 +76,7 @@ export default {
         language: "zh_CN",
         skin_url: "/static/tinymce/skins/ui/oxide",
         width:500,
+        forced_root_block:"",
         height: 360,
         min_height: 770,
         max_height: 770,
