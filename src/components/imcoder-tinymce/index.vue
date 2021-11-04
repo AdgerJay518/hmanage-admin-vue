@@ -75,7 +75,7 @@ export default {
         language_url: "/static/tinymce/langs/zh_CN.js", // 中文语言包路径
         language: "zh_CN",
         skin_url: "/static/tinymce/skins/ui/oxide",
-        width:720,
+        width:500,
         height: 360,
         min_height: 770,
         max_height: 770,

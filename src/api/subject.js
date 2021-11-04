@@ -16,10 +16,11 @@ export function listByCateId(params) {
     })
 }
 
-export function deleteSubject(id) {
+export function deleteSubject(data) {
     return request({
-        url:'/subject/delete/'+id,
-        method:'post'
+        url:'/subject/delete/',
+        method:'post',
+        data:data
     })
 }
 export function updateSubject(id,data) {
@@ -29,3 +30,20 @@ export function updateSubject(id,data) {
         data:data
     })
 }
+
+export function getSubject(id) {
+    return request({
+        url:'/subject/'+id,
+        method:'get',
+    })
+}
+
+export function create(data) {
+    return request({
+        url:'/subject/create',
+        method:'post',
+        data:data
+    })
+}
+
+

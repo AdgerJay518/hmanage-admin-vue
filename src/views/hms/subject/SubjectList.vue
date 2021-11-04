@@ -3,8 +3,12 @@
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets"></i>
       <span>数据列表</span>
-<!--      <el-button size="mini" class="btn-add" @click="handleSelectSubject()" style="margin-left: 20px">添加</el-button>-->
-    </el-card>
+      <el-button
+          class="btn-add"
+          @click="handleAddSubjectList()"
+          size="mini">
+        添加主题
+      </el-button></el-card>
 
     <div class="table-container">
       <el-table ref="listTable"
@@ -76,34 +80,12 @@
           :total="total">
       </el-pagination>
     </div>
-
-    <el-dialog title="编辑"
-               :visible.sync="editDialogVisible"
-               width="40%">
-      <el-form :model="subList"
-               ref="subListForm"
-               label-width="150px" size="small">
-        <el-form-item label="标题：">
-          <el-input v-model="subList.title" style="width: 250px"></el-input>
-        </el-form-item>
-        <el-form-item label="内容：">
-          <el-input v-model="subList.description"
-                    type="textarea"
-                    :rows="5"
-                    style="width: 250px"></el-input>
-        </el-form-item>
-      </el-form>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="editDialogVisible = false" size="small">取 消</el-button>
-        <el-button type="primary" @click="handleEditDialogConfirm()" size="small">确 定</el-button>
-      </span>
-    </el-dialog>
   </div>
 </template>
 
 <script>
 
-import {listByCateId,deleteSubject,updateSubject} from '../../../api/subject';
+import {listByCateId,deleteSubject} from '../../../api/subject';
 const defaultListQuery = {
   pageNum: 1,
   pageSize: 5,
@@ -118,7 +100,6 @@ export default {
       list: null,
       total: null,
       listLoading: false,
-      editDialogVisible:false,
       subList:{}
     }
   },
@@ -127,6 +108,9 @@ export default {
     this.getList();
   },
   methods:{
+    handleAddSubjectList(){
+      this.$router.push('/hms/addSubjectList');
+    },
     handleShowComment(index,row){
       this.$router.push({path:'/hms/subjectComment',query:{
           subjectId:row.id}})
@@ -141,16 +125,17 @@ export default {
       this.getList();
     },
     handleUpdate(index,row){
-      this.editDialogVisible = true;
-      this.subList = Object.assign({},row);
+      this.$router.push({path:'/hms/updateSubjectList',query:{id:row.id}});
     },
     handleDelete(index,row){
-      this.$confirm('是否要删除该商品?', '提示', {
+      this.$confirm('是否要删除该专题?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        deleteSubject(row.id).then(response => {
+        let params=new URLSearchParams();
+        params.append("id",row.id);
+        deleteSubject(params).then(response => {
           this.$message({
             type: 'success',
             message: '删除成功!'
@@ -158,22 +143,6 @@ export default {
           this.getList();
         });
       });
-    },
-    handleEditDialogConfirm(){
-      this.$confirm('是否要确认?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        updateSubject(this.subList.id,this.subList).then(response => {
-          this.$message({
-            message: '修改成功！',
-            type: 'success'
-          });
-          this.editDialogVisible =false;
-          this.getList();
-        })
-      })
     },
     getList() {
       this.listLoading = true;

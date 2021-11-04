@@ -222,6 +222,20 @@ export const asyncRouter = [
         meta: {title: '更新专题'},
         hidden: true
       },
+      {
+        path: 'addSubjectList',
+        name: 'addSubjectList',
+        component: () => import('../views/hms/subject/addSubjectList'),
+        meta: {title: '添加主题'},
+        hidden: true
+      },
+      {
+        path: 'updateSubjectList',
+        name: 'updateSubjectList',
+        component: () => import('../views/hms/subject/updateSubjectList'),
+        meta: {title: '更新主题'},
+        hidden: true
+      },
     ]
   },
   {
