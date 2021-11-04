@@ -7,7 +7,7 @@
       <el-form-item label="标题：" prop="name">
         <el-input v-model="subject.title"></el-input>
       </el-form-item>
-      <el-form-item label="主题：">
+      <el-form-item label="专题：">
         <el-select v-model="subject.categoryId"
                    placeholder="请选择分类">
           <el-option
@@ -70,6 +70,7 @@ export default {
     return {
       subject: Object.assign({}, defaultSubject),
       selectSubject:[],
+      preCategoryId:null,
       listQuery:{
         recommendStatus:null,
         subjectName: null,
@@ -88,6 +89,7 @@ export default {
     if (this.isEdit) {
       getSubject(this.$route.query.id).then(response => {
         this.subject = response.data;
+        this.preCategoryId=this.subject.categoryId
       });
     } else {
       this.subject = Object.assign({}, defaultSubject);
@@ -109,7 +111,7 @@ export default {
             type: 'warning'
           }).then(() => {
             if (this.isEdit) {
-              updateSubject(this.$route.query.id, this.subject).then(response => {
+              updateSubject(this.preCategoryId,this.subject).then(response => {
                 this.$message({
                   message: '修改成功',
                   type: 'success',
