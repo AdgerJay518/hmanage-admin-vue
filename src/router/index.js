@@ -310,7 +310,7 @@ export const asyncRouter = [
 ]
 
 export default new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   scrollBehavior: () => ({y: 0}),
   routes: router
 })

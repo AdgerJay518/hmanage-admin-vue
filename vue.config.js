@@ -5,6 +5,7 @@ function resolve(dir) {
 }
 
 module.exports = {
+    publicPath:'./',//导出css以及js文件引入的方式为相对路径，默认是绝对路径
     chainWebpack: config => {
         config.plugin('define').tap(args => {
             const argv = process.argv

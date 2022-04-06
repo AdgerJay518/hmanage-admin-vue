@@ -12,6 +12,9 @@ import 'normalize.css/normalize.css'// A modern alternative to CSS resets
 import VCharts from 'v-charts'
 import locale from 'element-ui/lib/locale/lang/zh-CN'
 
+//项目上线标识
+Vue.config.productionTip=true
+
 Vue.use(VCharts)
 
 //require('./mock.js')
